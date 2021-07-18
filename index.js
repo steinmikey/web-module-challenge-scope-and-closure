@@ -74,7 +74,7 @@ NOTE: This will be a callback function for the tasks below
 
 function inning(/*Code Here*/) {
   /*Code Here*/
-  const num0to2 = Math.round(Math.random()*2);
+  const num0to2 = Math.round(Math.random() * 2);
   return num0to2;
 }
 
@@ -92,9 +92,18 @@ Use the finalScore function below to do the following:
 }
 */
 
-function finalScore(/*code Here*/) {
+function finalScore(inning, numberOfInnings) {
   /*Code Here*/
+  const score = { Away: 0, Home: 0 };
+
+  for (let i = 0; i < numberOfInnings; i++) {
+    score.Away += Math.round(Math.random() * 2);
+    score.Home += Math.round(Math.random() * 2);
+  }
+  return score;
 }
+
+console.log("task 3", finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
