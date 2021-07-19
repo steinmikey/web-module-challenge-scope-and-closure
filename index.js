@@ -161,26 +161,26 @@ Use the scoreboard function below to do the following:
 
 function scoreboard(getInningScorecb, inningcb, numberOfInnings) {
   const finalScore = { Away: 0, Home: 0 };
-  const gameFinalPrintout = [];
-  const scoresStrings = [];
+  const finalScoreSheet = [];
+  const scoresEachInning = [];
 
   for (let i = 0; i < numberOfInnings; i++) {
-    scoresStrings.push(getInningScorecb(inningcb));
+    scoresEachInning.push(getInningScorecb(inningcb));
 
-    finalScore.Away = finalScore.Away + scoresStrings[i].Away;
-    finalScore.Home = finalScore.Home + scoresStrings[i].Home;
+    finalScore.Away = finalScore.Away + scoresEachInning[i].Away;
+    finalScore.Home = finalScore.Home + scoresEachInning[i].Home;
 
-    gameFinalPrintout.push(`Inning ${i + 1}: Away ${scoresStrings[i].Away} - Home ${scoresStrings[i].Home}`);
+    finalScoreSheet.push(`Inning ${i + 1}: Away ${scoresEachInning[i].Away} - Home ${scoresEachInning[i].Home}`);
   }
 
   if (finalScore.Away === finalScore.Home) {
-    gameFinalPrintout.push(`This game will require extra innings: Away ${finalScore.Away} - Home ${finalScore.Home}`);
+    finalScoreSheet.push(`This game will require extra innings: Away ${finalScore.Away} - Home ${finalScore.Home}`);
   } else {
-    gameFinalPrintout.push(`Final Score: Away ${finalScore.Away} - Home ${finalScore.Home}`);
+    finalScoreSheet.push(`Final Score: Away ${finalScore.Away} - Home ${finalScore.Home}`);
   }
-
-  return gameFinalPrintout;
+  return finalScoreSheet;
 }
+
 console.log("task 5", scoreboard(getInningScore, inning, 9));
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
