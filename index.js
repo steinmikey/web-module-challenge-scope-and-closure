@@ -74,8 +74,7 @@ NOTE: This will be a callback function for the tasks below
 
 function inning(/*Code Here*/) {
   /*Code Here*/
-  const num0to2 = Math.round(Math.random() * 2);
-  return num0to2;
+  return Math.floor(Math.random() * 3);
 }
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -91,7 +90,7 @@ Use the finalScore function below to do the following:
   "Away": 5
 }
 */
-
+// similar to hockeygame function
 function finalScore(inning, numberOfInnings) {
   /*Code Here*/
   const score = { Away: 0, Home: 0 };
@@ -104,7 +103,7 @@ function finalScore(inning, numberOfInnings) {
 }
 
 console.log("task 3", finalScore(inning, 9));
-
+//similar to totalgame function
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
