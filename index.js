@@ -91,8 +91,8 @@ Use the finalScore function below to do the following:
 }
 */
 // similar to hockeygame function
+
 function finalScore(inningcb, numberOfInnings) {
-  /*Code Here*/
   const score = { Away: 0, Home: 0 };
 
   for (let i = 0; i < numberOfInnings; i++) {
@@ -112,10 +112,10 @@ Use the getInningScore() function below to do the following:
 
 function getInningScore(inningcb) {
   /*Your Code Here */
-  const inningScore = { Away: 0, Home: 0 };
-  inningScore.Away = inningScore.Away + inningcb();
-  inningScore.Home += inningcb();
-  return inningScore;
+  return { Away: inningcb(), Home: inningcb() };
+  // inningScore.Away = inningScore.Away + inningcb();
+  // inningScore.Home += inningcb();
+  // return inningScore;
 }
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -127,8 +127,8 @@ Use the scoreboard function below to do the following:
   Home and Away team's scores for each inning.  Not the cumulative score.
   5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
      If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
-  
-  NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
+  */
+/*  NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
   an array of strings like this:
 [
   "Inning 1: Away 1 - Home 2", 
@@ -159,9 +159,29 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScorecb, inningcb, numberOfInnings) {
+  const finalScore = { Away: 0, Home: 0 };
+  const gameFinalPrintout = [];
+  const scoresStrings = [];
+
+  for (let i = 0; i < numberOfInnings; i++) {
+    scoresStrings.push(getInningScorecb(inningcb));
+
+    finalScore.Away = finalScore.Away + scoresStrings[i].Away;
+    finalScore.Home = finalScore.Home + scoresStrings[i].Home;
+
+    gameFinalPrintout.push(`Inning ${i + 1}: Away ${scoresStrings[i].Away} - Home ${scoresStrings[i].Home}`);
+  }
+
+  if (finalScore.Away === finalScore.Home) {
+    gameFinalPrintout.push(`This game will require extra innings: Away ${finalScore.Away} - Home ${finalScore.Home}`);
+  } else {
+    gameFinalPrintout.push(`Final Score: Away ${finalScore.Away} - Home ${finalScore.Home}`);
+  }
+
+  return gameFinalPrintout;
 }
+console.log("task 5", scoreboard(getInningScore, inning, 9));
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
