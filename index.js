@@ -91,28 +91,30 @@ Use the finalScore function below to do the following:
 }
 */
 // similar to hockeygame function
-function finalScore(inning, numberOfInnings) {
+function finalScore(inningcb, numberOfInnings) {
   /*Code Here*/
   const score = { Away: 0, Home: 0 };
 
   for (let i = 0; i < numberOfInnings; i++) {
-    score.Away += inning();
-    score.Home += inning();
+    score.Away = score.Away + inningcb();
+    score.Home += inningcb();
   }
   return score;
 }
 
 console.log("task 3", finalScore(inning, 9));
+
 //similar to totalgame function
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(inning) {
+function getInningScore(inningcb) {
   /*Your Code Here */
   const inningScore = { Away: 0, Home: 0 };
-
+  inningScore.Away = inningScore.Away + inningcb();
+  inningScore.Home += inningcb();
   return inningScore;
 }
 
